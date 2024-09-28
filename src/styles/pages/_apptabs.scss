@@ -1,0 +1,26 @@
+.app-tabs {
+  background-color: $background-primary;
+
+  min-height: 80vh;
+  padding: 1rem 0 0 0;
+
+  .ui.attached.tabular.menu {
+
+    font-size: 1rem;
+
+    > a {
+      &:first-child {
+        margin-left: auto;
+      }
+      &:last-child {
+        margin-right: auto;
+      }
+    }
+  }
+
+  .ui.bottom.attached.segment.active.tab {
+    border: none;
+
+    background-color: $background-secondary;
+  }
+}

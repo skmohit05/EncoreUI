@@ -1,0 +1,45 @@
+.general-signup {
+  background-color: $background-primary;
+
+  flex: 1 1 auto;
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  > .general-signup-container {
+    flex: 0 0 auto;
+    width: 36rem;
+    align-self: center;
+    border: 1px solid $border-primary;
+    padding: 1rem;
+
+    @media screen and (max-width: 600px) {
+      width: 24rem;
+    }
+
+    .general-signup-email-address-form {
+      padding: 0 0 0.5rem 0;
+    }
+
+    .general-signup-terms {
+      label {
+        font-size: 0.875rem;
+      }
+    }
+
+    .signup-bottom {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      row-gap: 0.5rem;
+    }
+  }
+
+  .ui.form .disabled.field, .ui.form .disabled.fields .field, .ui.form .field :disabled {
+    pointer-events: none;
+    opacity: 1;
+  }
+}

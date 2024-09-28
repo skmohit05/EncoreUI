@@ -1,0 +1,264 @@
+.general-empjobposting {
+  $container-width: 72rem;
+  $row-gap: 0.5rem;
+
+  // Alignment for form fields in row
+  @mixin flex-child-row-wrap($column-gap) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    row-gap: $row-gap;
+    column-gap: $column-gap;
+  }
+
+  // Alignment for a field - Label and Input
+  @mixin flex-child-row-nowrap() {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  @mixin flex-child-column-nowrap() {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  @mixin flex-self-nogrow() {
+    flex: 0 0 auto;
+  }
+
+  @mixin flex-self-grow() {
+    flex: 1 1 auto;
+  }
+
+  @mixin row-container($field-gap) {
+    @include flex-self-nogrow();
+    @include flex-child-row-wrap($field-gap);
+  }
+
+  @mixin row-field-grow() {
+    @include flex-self-grow();
+    @include flex-child-row-nowrap();
+  }
+
+  @mixin row-field-nogrow() {
+    @include flex-self-nogrow();
+    @include flex-child-row-nowrap();
+  }
+
+  // Styling begin
+  @include flex-self-grow();
+  background-color: $background-primary;
+  align-self: center;
+  width: 100%;
+  max-width: $container-width;
+
+  @include flex-child-column-nowrap();
+  align-items: center;
+
+  > .general-empjobposting-container {
+    @include flex-self-nogrow();
+    padding: 1rem 1rem 1rem 1rem;
+    width: 100%;
+
+    @include flex-child-column-nowrap();
+
+    @media screen and (max-width: 380px) {
+      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    > .empjobposting-subheader {
+      @include flex-self-nogrow();
+      margin: 0rem 0rem 0.5rem 0rem;
+    }
+
+    > .empjobposting-rows {
+      @include flex-self-nogrow();
+      align-self: center;
+      border: 1px solid $border-primary;
+      padding: 1rem 1rem 1rem 1rem;
+      width: 100%;
+
+      @include flex-child-column-nowrap();
+      row-gap: $row-gap;
+
+      @media screen and (max-width: 380px) {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+      }
+
+      > .empjobposting-assigntype-row {
+        @include row-field-nogrow();
+        > .empjobposting-assigntype-label {
+          width: 10rem;
+        }
+        > .empjobposting-assigntype-input {
+          min-width: 12rem;
+          max-width: 12rem;
+        }
+      }
+
+      > .empjobposting-ts-row {
+        @include row-container(2rem);
+        > .empjobposting-ts-title {
+          @include row-field-nogrow();
+          > .empjobposting-ts-title-label {
+            width: 10rem;
+          }
+          > .empjobposting-ts-title-input {
+            min-width: 12rem;
+            max-width: 12rem;
+          }
+        }
+        > .empjobposting-ts-specialty {
+          @include row-field-nogrow();
+          > .empjobposting-ts-specialty-label {
+            width: 10rem;
+          }
+          > .empjobposting-ts-specialty-input {
+            min-width: 16rem;
+            max-width: 16rem;
+          }
+        }
+      }
+
+      > .empjobposting-shift-row {
+        @include row-field-nogrow();
+        > .empjobposting-shift-label {
+          width: 10rem;
+        }
+        > .empjobposting-shift-input {
+          min-width: 12rem;
+          max-width: 12rem;
+        }
+      }
+
+      > .empjobposting-sp-row {
+        @include row-container(2rem);
+        > .empjobposting-sp-supervision{
+          @include row-field-nogrow();
+          align-self: stretch;
+          height: 2.715rem;
+          > .empjobposting-sp-supervision-label{
+            width: 14rem;
+          }
+          > .empjobposting-sp-supervision-input {
+            width: 5rem;
+            margin: 4px 0px 0px 0px;
+          }
+        }
+
+        > .empjobposting-sp-prescription {
+          @include row-field-nogrow();
+          align-self: stretch;
+          height: 2.715rem;
+          > .empjobposting-sp-prescription-label {
+            width: 14rem;
+          }
+          > .empjobposting-sp-prescription-input {
+            width: 5rem;
+            margin: 4px 0px 0px 0px;
+          }
+        }
+      }
+
+      > .empjobposting-assignment-row {
+        @include row-container(2rem);
+        row-gap: 0.5rem;
+        > .empjobposting-assignment-from {
+          @include row-field-nogrow();
+          height: 2.715rem;
+          > .empjobposting-assignment-from-label {
+            width: 10rem;
+          }
+          > .empjobposting-assignment-from-input {
+            min-width: 9rem;
+            max-width: 9rem;
+            padding: 0.5rem 0.2rem 0.5rem 0.3rem;
+          }
+        }
+        > .empjobposting-assignment-to {
+          @include row-field-nogrow();
+          height: 2.715rem;
+          > .empjobposting-assignment-to-label {
+            width: 10rem;
+          }
+          > .empjobposting-assignment-to-input {
+            min-width: 9rem;
+            max-width: 9rem;
+            padding: 0.5rem 0.2rem 0.5rem 0.3rem;
+          }
+        }
+      }
+
+      > .empjobposting-compensation-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        > .empjobposting-compensation-label {
+          @include flex-self-nogrow();
+          width: 12rem;
+        }
+        > .empjobposting-compensation-input {
+          flex: 0 1 auto;
+          max-width: 29rem;
+        }
+      }
+
+      > .empjobposting-experience-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        > .empjobposting-experience-label {
+          @include flex-self-nogrow();
+          width: 18rem;
+        }
+        > .empjobposting-experience-input {
+          flex: 0 1 23rem;
+        }
+      }
+
+      > .empjobposting-priorityheader-row {
+        @include row-field-grow();
+        .empjobposting-priorityheader-label {
+          @include row-field-grow();
+        }
+      }
+
+      > .empjobposting-priority-row {
+        @include row-field-nogrow();
+        > .empjobposting-priority-label {
+          @include flex-self-nogrow();
+          width: 6rem;
+        }
+        > .empjobposting-priority-input {
+          min-width: 20rem;
+          max-width: 20rem;
+        }
+      }
+
+      > .empjobposting-btn-row {
+        @include row-container(0.5rem);
+        align-self: flex-end;
+        justify-content: flex-end;
+        padding: 1rem 0rem 0rem 0rem;
+
+        @media screen and (max-width: 380px) {
+          padding: 0.5rem 0rem 0rem 0rem;
+        }
+      }
+    }
+
+    input[type="date"].empjobposting-date-error {
+      background: #fff6f6;
+      border: 1px solid #e0b4b4;
+      border-radius: 0.28571429rem;
+      color: $field-error-color;
+    }
+
+    .empjobposting-label-red {
+      color: $field-error-color;
+    }
+
+    .empjobposting-label-blue {
+      color: $aqua-blue;
+    }
+  }
+}

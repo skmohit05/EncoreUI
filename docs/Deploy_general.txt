@@ -1,0 +1,52 @@
+The document below explains how to build and deploy encore app webservices. 
+Build is to be executed in local machine and war file needs to be deployed to AWS VM
+
+Pre-setup for building the project
+----------------------------------
+1. Node JS
+   a. Install node js from https://nodejs.org/dist/v14.17.4/node-v14.17.4-x64.msi
+
+
+Build
+-----
+1. Checkout project from github (https://github.com/encoretimeapp/encoretime) to a suitable folder
+2. cd to EncoreUO
+3. run command: npm install      - Warnings reported in this step can be ignored)
+4. run command: npm run build    - Creates a build folder with deployable html/js/css/static files
+
+ 
+Deployment
+----------
+1. Create suitable folder in VM
+2. Copy contents from deploy folder to VM folder
+3. Copy build folder to VM folder (copy as a folder and not files within folder)
+4. In VM folder run: npm install
+5. In VM folder run: node server.js
+
+Above deployment steps provide information for setting up fresh
+
+AWS VM
+------
+-> In VM node server.js is setup as systemctl encoreui and is automatically invoked on system startup (sudo systemctl start/stop/status encoreui)
+-> EncoreUI project folder has deploy.bat file, when run from same location, it deploys all contents except certs from local machine to VM
+
+-> Folder structure in AWS VM
+-----------------------------
+Folder path:/data/encoreapp
+ |
+ |-- build (folder - copied over from local build)
+     |-- ... (contents from UI build - html/js/css/static files)
+ |-- certs (folder)
+     |-- ddddddddddd.pem (certificate file)
+	 |-- ddddddddddd.txt (key file)
+ |-- deploy.sh        (used for deployment after copying files)
+ |-- node_modules     (generated)
+ |-- package-lock.json
+ |-- package.json
+ |-- server.js
+
+--> Settings Customizations 
+---------------------------
+1. Copy certificate and key file to certs folder, if there are changes in SSL
+2. If webservices is hosted in different machine, update EncoreUI\package.json REACT_APP_API_URL to new URL location, build and deploy this project
+ 

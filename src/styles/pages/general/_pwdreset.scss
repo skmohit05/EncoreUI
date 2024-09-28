@@ -1,0 +1,33 @@
+.general-pwdreset {
+  background-color: $background-primary;
+
+  flex: 1 1 auto;
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  > .general-pwdreset-container {
+    flex: 0 0 auto;
+    width: 36rem;
+    align-self: center;
+    border: 1px solid $border-primary;
+    padding: 1rem;
+
+    @media screen and (max-width: 600px) {
+      width: 24rem;
+    }
+
+    .general-pwdreset-row {
+      display:flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      .general-pwdreset-login {
+        align-content: flex-end;
+      }
+    }
+  }
+}

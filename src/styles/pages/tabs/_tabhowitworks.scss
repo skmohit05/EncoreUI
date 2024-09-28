@@ -1,0 +1,18 @@
+.howitworks-tab {
+  display: flex;
+  flex-flow: row nowrap;
+
+  @media screen and (max-width: 600px) {
+    flex-flow: column wrap;
+  }
+  
+  .howitworks-left-section {
+    border: 1px solid $border-primary;
+    width: 40%;
+    padding: 1.5rem;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}

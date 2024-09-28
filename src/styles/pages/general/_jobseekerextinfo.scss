@@ -1,0 +1,378 @@
+.general-jobseekerextinfo {
+  $container-width: 72rem;
+  $row-gap: 0.5rem;
+
+  // Alignment for form fields in row
+  @mixin flex-child-row-wrap($column-gap) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    row-gap: $row-gap;
+    column-gap: $column-gap;
+  }
+
+  // Alignment for a field - Label and Input
+  @mixin flex-child-row-nowrap() {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  @mixin flex-child-column-nowrap() {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  @mixin flex-self-nogrow() {
+    flex: 0 0 auto;
+  }
+
+  @mixin flex-self-grow() {
+    flex: 1 1 auto;
+  }
+
+  @mixin row-container($field-gap) {
+    @include flex-self-nogrow();
+    @include flex-child-row-wrap($field-gap);
+  }
+
+  @mixin row-field-grow() {
+    @include flex-self-grow();
+    @include flex-child-row-nowrap();
+  }
+
+  @mixin row-field-nogrow() {
+    @include flex-self-nogrow();
+    @include flex-child-row-nowrap();
+  }
+
+  // Styling begin
+  @include flex-self-grow();
+  background-color: $background-primary;
+  align-self: center;
+  width: 100%;
+  max-width: $container-width;
+
+  @include flex-child-column-nowrap();
+  align-items: center;
+
+  .general-jobseekerextinfo-container {
+    @include flex-self-nogrow();
+    align-self: center;
+    padding: 1rem 1rem 1rem 1rem;
+
+    @include flex-child-column-nowrap();
+
+    @media screen and (max-width: 380px) {
+      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    > .jobseekerextinfo-subheader {
+      @include flex-self-nogrow();
+      margin: 0rem 0rem 0.5rem 0rem;
+    }
+
+    > .jobseekerextinfo-rows {
+      @include flex-self-nogrow();
+      align-self: center;
+      border: 1px solid $border-primary;
+      padding: 1rem 1rem 1rem 1rem;
+
+      @include flex-child-column-nowrap();
+      row-gap: $row-gap;
+
+      @media screen and (max-width: 380px) {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+      }
+
+      > .jobseekerextinfo-address-row {
+        @include row-field-grow();
+        > .jobseekerextinfo-address-label {
+          width: 5rem;
+        }
+        > .jobseekerextinfo-address-input {
+          @include flex-self-grow();
+        }
+      }
+
+      > .jobseekerextinfo-cszc-row {
+        @include row-container(1rem);
+        justify-content: space-between;
+        > .jobseekerextinfo-cszc-city {
+          @include row-field-grow();
+          > .jobseekerextinfo-cszc-city-label {
+            width: 5rem;
+          }
+          > .jobseekerextinfo-cszc-city-input {
+            @include flex-self-grow();
+          }
+        }
+        > .jobseekerextinfo-cszc-statezip {
+          @include row-container(2rem);
+          > .jobseekerextinfo-cszc-state {
+            @include row-field-nogrow();
+            > .jobseekerextinfo-cszc-state-label {
+              width: 5rem;
+            }
+            > .jobseekerextinfo-cszc-state-input {
+              min-width: 8rem;
+              max-width: 8rem;
+            }
+          }
+          > .jobseekerextinfo-cszc-zip {
+            @include row-field-nogrow();
+            > .jobseekerextinfo-cszc-zip-label {
+              width: 3rem;
+            }
+            > .jobseekerextinfo-cszc-zip-input {
+              min-width: 8rem;
+              max-width: 8rem;
+            }
+          }
+        }
+        > .jobseekerextinfo-cszc-country {
+          @include row-field-nogrow();
+          > .jobseekerextinfo-cszc-country-label {
+            width: 5rem;
+          }
+          > .jobseekerextinfo-cszc-country-input {
+            min-width: 8rem;
+            max-width: 8rem;
+          }
+        }
+      }
+
+      > .jobseekerextinfo-ts-row {
+        @include row-container(2rem);
+        > .jobseekerextinfo-ts-title {
+          @include row-field-grow();
+          > .jobseekerextinfo-ts-title-label {
+            width: 5rem;
+          }
+          > .jobseekerextinfo-ts-title-input {
+            @include flex-self-grow();
+          }
+        }
+        > .jobseekerextinfo-ts-specialty {
+          @include row-field-grow();
+          > .jobseekerextinfo-ts-specialty-label {
+            width: 5rem;
+          }
+          > .jobseekerextinfo-ts-specialty-input {
+            @include flex-self-grow();
+          }
+        }
+      }
+
+      > .jobseekerextinfo-statelicenseinfo {
+        @include flex-self-nogrow();
+        @include flex-child-column-nowrap();
+        > .jobseekerextinfo-statelicenseinfo-row {
+          @include row-container(1.5rem);
+          @media screen and (max-width: 760px) {
+            column-gap: 0.5rem;
+          }
+          @media screen and (max-width: 700px) {
+            border: 1px solid lightgrey;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+          }
+          > .jobseekerextinfo-statelicenseinfo-state {
+            @include row-field-nogrow();
+            > .jobseekerextinfo-statelicenseinfo-state-label {
+              width: 7rem;
+              @media screen and (max-width: 760px) {
+                width: 6rem;
+              }
+            }
+            > .jobseekerextinfo-statelicenseinfo-state-input {
+              min-width: 6rem;
+              max-width: 6rem;
+            }
+          }
+          > .jobseekerextinfo-statelicenseinfo-pa {
+            @include row-field-nogrow();
+            > .jobseekerextinfo-statelicenseinfo-pa-label {
+              width: 7rem;
+              @media screen and (max-width: 760px) {
+                width: 6rem;
+              }
+            }
+            > .jobseekerextinfo-statelicenseinfo-pa-input {
+              min-width: 4rem;
+              max-width: 4rem;
+            }
+          }
+          > .jobseekerextinfo-statelicenseinfo-led {
+            @include row-field-nogrow();
+            > .jobseekerextinfo-statelicenseinfo-led-label {
+              width: 7rem;
+              @media screen and (max-width: 760px) {
+                width: 6rem;
+              }
+            }
+            > .jobseekerextinfo-statelicenseinfo-led-input {
+              min-width: 9rem;
+              max-width: 9rem;
+              padding: 0.5rem 0.2rem 0.5rem 0.3rem;
+            }
+          }
+          > .jobseekerextinfo-statelicenseinfo-buttons {
+            @include row-field-nogrow();
+          }
+        }
+      }
+
+      > .jobseekerextinfo-ha-row {
+        @include row-container(2rem);
+        > .jobseekerextinfo-ha-selection {
+          @include row-field-nogrow();
+          align-self: stretch;
+          height: 2.715rem;
+          > .jobseekerextinfo-ha-selection-label {
+            width: 11rem;
+          }
+          .jobseekerextinfo-ha-selection-radio {
+            width: 5rem;
+            margin: 4px 0px 0px 0px;
+          }
+        }
+        > .jobseekerextinfo-ha-info {
+          @include row-field-grow();
+          align-items: center;
+          > .jobseekerextinfo-ha-info-label {
+            width: 11rem;
+          }
+          > .jobseekerextinfo-ha-info-input {
+            @include flex-self-grow();
+          }
+        }
+      }
+
+      > .jobseekerextinfo-compensation-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        > .jobseekerextinfo-compensation-label {
+          @include flex-self-nogrow();
+          width: 12rem;
+        }
+        > .jobseekerextinfo-compensation-slider {
+          flex: 0 1 auto;
+          max-width: 29rem;
+        }
+      }
+
+      > .jobseekerextinfo-experience-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        > .jobseekerextinfo-experience-label {
+          @include flex-self-nogrow();
+          width: 16rem;
+        }
+        > .jobseekerextinfo-experience-slider {
+          flex: 0 1 25rem;
+        }
+      }
+
+      > .jobseekerextinfo-typepreference-row {
+        @include row-field-nogrow();
+        > .jobseekerextinfo-typepreference-label {
+          width: 11rem;
+        }
+        > .jobseekerextinfo-typepreference-input {
+          min-width: 10rem;
+          max-width: 10rem;
+        }
+      }
+
+      > .jobseekerextinfo-travelpreference-row {
+        @include row-container(2rem);
+        > .jobseekerextinfo-travelpreference-interested {
+          @include row-field-nogrow();
+          align-self: stretch;
+          height: 2.715rem;
+          > .jobseekerextinfo-travelpreference-interested-label {
+            width: 11rem;
+          }
+          > .jobseekerextinfo-travelpreference-interested-input {
+            width: 5rem;
+            margin: 2px 0px 0px 0px;
+          }
+        }
+        > .jobseekerextinfo-travelpreference-state {
+          @include row-field-nogrow();
+          > .jobseekerextinfo-travelpreference-state-label {
+            width: 11rem;
+          }
+          > .jobseekerextinfo-travelpreference-state-input {
+            min-width: 10rem;
+            max-width: 10rem;
+          }
+        }
+      }
+
+      > .jobseekerextinfo-shiftpreference-row {
+        @include row-container(2rem);
+        > .jobseekerextinfo-shiftpreference-selection {
+          @include row-field-nogrow();
+          > .jobseekerextinfo-shiftpreference-selection-label {
+            width: 11rem;
+          }
+          > .jobseekerextinfo-shiftpreference-selection-input {
+            min-width: 10rem;
+            max-width: 10rem;
+          }
+        }
+        > .jobseekerextinfo-shiftpreference-oncall {
+          @include row-field-nogrow();
+          height: 2.715rem;
+          > .jobseekerextinfo-shiftpreference-oncall-label {
+            width: 11rem;
+          }
+          > .jobseekerextinfo-shiftpreference-oncall-input {
+            width: 5rem;
+            margin: 2px 0px 0px 0px;
+          }
+        }
+      }
+
+      > .jobseekerextinfo-governmentassignment-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        > .jobseekerextinfo-governmentassignment-label {
+          width: 18rem;
+        }
+        > .jobseekerextinfo-governmentassignment-input {
+          width: 5rem;
+          margin: 2px 0px 0px 0px;
+        }
+      }
+
+      > .jobseekerextinfo-continuebtn-row {
+        @include row-field-nogrow();
+        height: 2.715rem;
+        align-items: stretch;
+        justify-content: flex-end;
+
+        > .jobseekerextinfo-continuebtn-submit {
+          margin: 0px;
+          padding: 0rem 0.4rem 0rem 0.4rem;
+          word-wrap: break-word;
+        }
+      }
+    }
+
+    .ui.form .disabled.field, .ui.form .disabled.fields .field, .ui.form .field :disabled {
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    .jobseekerextinfo-label-red {
+      color: #9f3a38;
+    }
+
+    .jobseekerextinfo-label-blue {
+      color: $aqua-blue;
+    }
+  }
+}

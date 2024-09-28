@@ -1,0 +1,13 @@
+
+.app-slider {
+  .slider {
+    width: 100vw;
+    max-height: 60vh;
+
+    > .slider-image {
+      object-fit: cover;
+    }
+  }
+}
+
+

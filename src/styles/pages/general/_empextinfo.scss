@@ -1,0 +1,261 @@
+.general-employerextinfo {
+  $container-width: 72rem;
+  $row-gap: 0.5rem;
+
+  // Alignment for form fields in row
+  @mixin flex-child-row-wrap($column-gap) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    row-gap: $row-gap;
+    column-gap: $column-gap;
+  }
+
+  // Alignment for a field - Label and Input
+  @mixin flex-child-row-nowrap() {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  @mixin flex-child-column-nowrap() {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  @mixin flex-self-nogrow() {
+    flex: 0 0 auto;
+  }
+
+  @mixin flex-self-grow() {
+    flex: 1 1 auto;
+  }
+
+  @mixin row-container($field-gap) {
+    @include flex-self-nogrow();
+    @include flex-child-row-wrap($field-gap);
+  }
+
+  @mixin row-field-grow() {
+    @include flex-self-grow();
+    @include flex-child-row-nowrap();
+  }
+
+  @mixin row-field-nogrow() {
+    @include flex-self-nogrow();
+    @include flex-child-row-nowrap();
+  }
+
+  // Styling begin
+  @include flex-self-grow();
+  background-color: $background-primary;
+  align-self: center;
+  width: 100%;
+  max-width: $container-width;
+
+  @include flex-child-column-nowrap();
+  align-items: center;
+
+  > .general-employerextinfo-container {
+    @include flex-self-nogrow();
+    align-self: center;
+    width: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+
+    @include flex-child-column-nowrap();
+
+    @media screen and (max-width: 380px) {
+      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    > .employerextinfo-subheader {
+      @include flex-self-nogrow();
+      margin: 0rem 0rem 0.5rem 0rem;
+    }
+
+    > .employerextinfo-rows {
+      @include flex-self-nogrow();
+      align-self: center;
+      width: 100%;
+      border: 1px solid $border-primary;
+      padding: 1rem 1rem 1rem 1rem;
+
+      @include flex-child-column-nowrap();
+      row-gap: $row-gap;
+
+      @media screen and (max-width: 380px) {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+      }
+
+      > .employerextinfo-orgrole-row {
+        @include row-field-grow();
+        > .employerextinfo-orgrole-label {
+          width: 10rem;
+        }
+        > .employerextinfo-orgrole-input {
+          @include flex-self-grow();
+          min-width: 10rem;
+          max-width: 30rem;
+        }
+      }
+
+      > .employerextinfo-orgname-row {
+        @include row-field-grow();
+        > .employerextinfo-orgname-label {
+          width: 10rem;
+        }
+        > .employerextinfo-orgname-input {
+          @include flex-self-grow();
+          min-width: 10rem;
+          max-width: 30rem;
+        }
+      }
+
+      > .employerextinfo-orgtype-row {
+        @include row-field-nogrow();
+        > .employerextinfo-orgtype-label {
+          width: 10rem;
+        }
+        > .employerextinfo-orgtype-input {
+          min-width: 15rem;
+          max-width: 15rem;
+        }
+      }
+
+      > .employerextinfo-factype-row {
+        @include row-field-nogrow();
+        > .employerextinfo-factype-label {
+          width: 10rem;
+        }
+        > .employerextinfo-factype-input {
+          min-width: 15rem;
+          max-width: 15rem;
+        }
+      }
+
+      > .employerextinfo-facsubtype-row {
+        @include row-field-nogrow();
+        > .employerextinfo-facsubtype-label {
+          width: 10rem;
+        }
+        > .employerextinfo-facsubtype-input {
+          min-width: 15rem;
+          max-width: 15rem;
+        }
+      }
+
+      > .employerextinfo-address-row {
+        @include row-field-grow();
+        > .employerextinfo-address-label {
+          width: 10rem;
+        }
+        > .employerextinfo-address-input {
+          @include flex-self-grow();
+        }
+      }
+
+
+      > .employerextinfo-cszc-row {
+        @include row-container(2rem);
+        justify-content: space-between;
+        > .employerextinfo-cszc-city {
+          @include row-field-grow();
+          > .employerextinfo-cszc-city-label {
+            width: 5rem;
+          }
+          > .employerextinfo-cszc-city-input {
+            @include flex-self-grow();
+          }
+        }
+        > .employerextinfo-cszc-state {
+          @include row-field-nogrow();
+          > .employerextinfo-cszc-state-label {
+            width: 5rem;
+          }
+          > .employerextinfo-cszc-state-input {
+            min-width: 8rem;
+            max-width: 8rem;
+          }
+        }
+        > .employerextinfo-cszc-zip {
+          @include row-field-nogrow();
+          > .employerextinfo-cszc-zip-label {
+            width: 5rem;
+          }
+          > .employerextinfo-cszc-zip-input {
+            min-width: 8rem;
+            max-width: 8rem;
+          }
+        }
+        > .employerextinfo-cszc-country {
+          @include row-field-nogrow();
+          > .employerextinfo-cszc-country-label {
+            width: 5rem;
+          }
+          > .employerextinfo-cszc-country-input {
+            min-width: 8rem;
+            max-width: 8rem;
+          }
+        }
+      }
+
+      > .employerextinfo-phone-row {
+        @include row-field-nogrow();
+        > .employerextinfo-phone-label {
+          width: 5rem;
+        }
+        > .employerextinfo-phone-input {
+          min-width: 10rem;
+          max-width: 10rem;
+        }
+      }
+
+      > .employerextinfo-hcheader-row {
+        @include row-container(2rem);
+        height: 2.715rem;
+      }
+
+      > .employerextinfo-hc-row {
+        @include row-container(1rem);
+        > .employerextinfo-hc-field {
+          @include row-field-nogrow();
+          height: 2.715rem;
+          > .employerextinfo-hc-label{
+            width: 14rem;
+          }
+          > .employerextinfo-hc-input {
+            width: 5rem;
+            margin: 4px 0px 0px 0px;
+          }
+        }
+      }
+
+      > .employerextinfo-svcheader-row {
+        @include row-container(2rem);
+        height: 2.715rem;
+      }
+
+      > .employerextinfo-svc-row {
+        @include row-container(1rem);
+        > .employerextinfo-svc-field {
+          @include row-field-nogrow();
+          height: 2.715rem;
+          > .employerextinfo-svc-label{
+            width: 14rem;
+          }
+          > .employerextinfo-svc-input {
+            width: 5rem;
+            margin: 4px 0px 0px 0px;
+          }
+        }
+      }
+
+      > .employerextinfo-btn-row {
+        @include row-container(0.5rem);
+        align-self: flex-end;
+        justify-content: flex-end;
+        padding: 1rem 0rem 0rem 0.5rem;
+      }
+    }
+  }
+}

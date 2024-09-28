@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Encore Time Application"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Encore Time</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      const disableZoom = () => {
+        const el = document.querySelector('meta[name=viewport]');
+        if (el !== null) {
+          let content = el.getAttribute('content');
+          let re = /maximum\-scale=[0-9\.]+/g;
+
+          if (re.test(content)) {
+            content = content.replace(re, 'maximum-scale=1.0');
+          } else {
+            content = [content, 'maximum-scale=1.0'].join(', ')
+          }
+          el.setAttribute('content', content);
+        }
+      };
+
+      const checkIsIOS = () =>
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+      if (checkIsIOS()) {
+        disableZoom();
+      }
+    </script>
+    <div id="root" class="root"></div>
+  </body>
+</html>
